@@ -90,3 +90,12 @@ function DisplayAllErrors
 {
     $error | Format-List -force
 }
+
+
+# ---------------------------------------------------------------------------------------------------------------------------------------
+function Translate-SID-to-human ([string]$sid)
+{
+    $objSID = New-Object System.Security.Principal.SecurityIdentifier($sid)
+    $objUser = $objSID.Translate( [System.Security.Principal.NTAccount])
+    return $objUser.Value  
+}
